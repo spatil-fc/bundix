@@ -14,13 +14,13 @@ class Bundix
       end
 
       if uri.user
-        open_options[:http_basic_authentication] = [uri.user, uri.password]
+        open_options[:http_basic_authentication] = [URI.unescape(uri.user), uri.password]
         uri.user = nil
         uri.password = nil
       end
 
       begin
-        open(uri.to_s, 'r', 0600, open_options) do |net|
+        URI.open(uri.to_s, 'r', 0600, open_options) do |net|
           File.open(file, 'wb+') { |local|
             File.copy_stream(net, local)
           }
