@@ -1,13 +1,13 @@
 {
   pkgs ? (import <nixpkgs> {}),
-  ruby ? pkgs.ruby_2_6,
+  ruby ? pkgs.ruby_3_0,
   bundler ? (pkgs.bundler.override { inherit ruby; }),
   nix ? pkgs.nix,
   nix-prefetch-git ? pkgs.nix-prefetch-git,
 }:
 pkgs.stdenv.mkDerivation rec {
-  version = "2.5.0";
-  name = "bundix";
+  version = "3.0.2";
+  name = "bundix_3_0_2";
   src = ./.;
   phases = "installPhase";
   installPhase = ''
