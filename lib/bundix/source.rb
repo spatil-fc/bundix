@@ -147,7 +147,7 @@ class Bundix
 
     def convert_rubygems
       remotes = spec.source.remotes.map{|remote| remote.to_s.sub(/\/+$/, '') }
-      hash = fetcher.fetch_local_hash(spec)
+      # hash = fetcher.fetch_local_hash(spec)
       remote, hash = fetcher.fetch_remotes_hash(spec, remotes) unless hash
       fail "couldn't fetch hash for #{spec.full_name}" unless hash
       puts "#{hash} => #{spec.full_name}.gem" if $VERBOSE
